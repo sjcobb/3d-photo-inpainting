@@ -28,6 +28,7 @@ args = parser.parse_args()
 config = yaml.load(open(args.config, 'r'))
 if config['offscreen_rendering'] is True:
     vispy.use(app='egl')
+    # vispy.use("PyQt5")
 os.makedirs(config['mesh_folder'], exist_ok=True)
 os.makedirs(config['video_folder'], exist_ok=True)
 os.makedirs(config['depth_folder'], exist_ok=True)
@@ -39,7 +40,12 @@ if isinstance(config["gpu_ids"], int) and (config["gpu_ids"] >= 0):
 else:
     device = "cpu"
 
+device = 'cpu'
 print(f"running on device {device}")
+
+# os.environ['DISPLAY']= ':0'
+# export DISPLAY=:0
+# export DISPLAY=':0'
 
 for idx in tqdm(range(len(sample_list))):
     depth = None
@@ -77,7 +83,8 @@ for idx in tqdm(range(len(sample_list))):
         print(f"Loading edge model at {time.time()}")
         depth_edge_model = Inpaint_Edge_Net(init_weights=True)
         depth_edge_weight = torch.load(config['depth_edge_model_ckpt'],
-                                       map_location=torch.device(device))
+                                       # map_location=torch.device(device))
+                                       map_location=torch.device('cpu'))
         depth_edge_model.load_state_dict(depth_edge_weight)
         depth_edge_model = depth_edge_model.to(device)
         depth_edge_model.eval()
@@ -85,7 +92,8 @@ for idx in tqdm(range(len(sample_list))):
         print(f"Loading depth model at {time.time()}")
         depth_feat_model = Inpaint_Depth_Net()
         depth_feat_weight = torch.load(config['depth_feat_model_ckpt'],
-                                       map_location=torch.device(device))
+                                       # map_location=torch.device(device))
+                                       map_location=torch.device('cpu'))
         depth_feat_model.load_state_dict(depth_feat_weight, strict=True)
         depth_feat_model = depth_feat_model.to(device)
         depth_feat_model.eval()
@@ -93,7 +101,8 @@ for idx in tqdm(range(len(sample_list))):
         print(f"Loading rgb model at {time.time()}")
         rgb_model = Inpaint_Color_Net()
         rgb_feat_weight = torch.load(config['rgb_feat_model_ckpt'],
-                                     map_location=torch.device(device))
+                                     # map_location=torch.device(device))
+                                     map_location=torch.device('cpu'))
         rgb_model.load_state_dict(rgb_feat_weight)
         rgb_model.eval()
         rgb_model = rgb_model.to(device)
@@ -110,6 +119,8 @@ for idx in tqdm(range(len(sample_list))):
                               depth_edge_model,
                               depth_edge_model,
                               depth_feat_model)
+
+        print(rt_info)
 
         if rt_info is False:
             continue
@@ -135,3 +146,4 @@ for idx in tqdm(range(len(sample_list))):
                         image.copy(), copy.deepcopy(sample['int_mtx']), config, image,
                         videos_poses, video_basename, config.get('original_h'), config.get('original_w'), border=border, depth=depth, normal_canvas=normal_canvas, all_canvas=all_canvas,
                         mean_loc_depth=mean_loc_depth)
+

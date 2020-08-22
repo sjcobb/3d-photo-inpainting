@@ -1,0 +1,126 @@
+NOTES
+
+...
+\\wsl$\Legacy\home\sjcobb
+
+aws help
+aws s3 help
+
+aws s3 cp ./test.txt s3://sagemaker-vfx-pipelines-alpha
+
+
+aws s3 cp ./model-inpainting.tar.gz s3://sagemaker-vfx-pipelines-alpha
+
+
+https://docs.aws.amazon.com/sagemaker/latest/dg/ex1-deploy-model.html
+
+
+https://gist.github.com/kauffmanes/5e74916617f9993bc3479f401dfec7da
+
+Anaconda3-2020.07-Linux-x86_64.sh
+
+wget https://repo.continuum.io/archive/Anaconda3-5.2.0-Linux-x86_64.sh
+
+wget https://repo.anaconda.com/archive/Anaconda3-2020.07-Linux-x86_64.sh
+
+
+bash Anaconda[YOUR VERSION].sh
+
+bash Anaconda3-2020.07-Linux-x86_64.sh
+
+
+PyTorch 1.4.0
+
+https://pytorch.org/get-started/locally/#mac-anaconda
+conda install pytorch torchvision cpuonly -c pytorch
+
+
+
+https://stackoverflow.com/questions/47113029/importerror-libsm-so-6-cannot-open-shared-object-file-no-such-file-or-directo
+
+
+\\wsl$\Legacy\home\sjcobb
+
+
+https://github.com/vt-vl-lab/3d-photo-inpainting/issues/65
+
+
+https://stackoverflow.com/questions/50729550/installing-g-on-windows-subsystem-for-linux
+
+https://github.com/watson-developer-cloud/python-sdk/issues/418#issuecomment-674038596
+sudo apt-get install g++
+
+Were there any other errors before that point? In my case, it was [issues with WSL](https://stackoverflow.com/questions/50729550/installing-g-on-windows-subsystem-for-linux) and I was also getting error: "unable to execute 'gcc': No such file or directory". I found a similar issue and followed the instructions here (https://github.com/watson-developer-cloud/python-sdk/issues/418#issuecomment-674038596) and ran 
+sudo apt update
+sudo apt install g++
+pip install -r requirements.txt
+
+
+
+cynetworkx==2.2rc1.dev20180527181709
+
+https://stackoverflow.com/questions/32389599/anaconda-importerror-libsm-so-6-cannot-open-shared-object-file-no-such-file-o
+
+sudo apt-get install -y python-qt4
+
+
+
+
+Can not open OpenGL 
+https://github.com/vt-vl-lab/3d-photo-inpainting/issues/83
+
+https://github.com/vt-vl-lab/3d-photo-inpainting/issues/83#issuecomment-669060948
+
+
+--
+
+https://medium.com/@avkashchauhan/creating-a-3d-photo-from-a-regular-image-using-the-3d-photo-inpainting-library-fd0b5247ccb8
+
+
+QStandardPaths XDG_RUNTIME_DIR not set, defaulting to '/tmp/runtime-sjcobb'
+
+WARNING QXcbConnection Could not connect to display
+Could not connect to any X display
+WARNING 
+QSTANDARDPATHS
+Could not connect to display
+
+https://github.com/vt-vl-lab/3d-photo-inpainting/issues/16#issuecomment-637383452
+
+https://github.com/vt-vl-lab/3d-photo-inpainting/issues/9
+
+RUNTIME ERROR Could not import backend "EGL"
+
+
+sudo apt-get install libgles2-mesa-dev
+
+https://github.com/vt-vl-lab/3d-photo-inpainting/issues/9
+
+https://github.com/vt-vl-lab/3d-photo-inpainting/issues/11#issuecomment-612711137
+
+--
+Could not determine DPI
+
+https://github.com/vt-vl-lab/3d-photo-inpainting/issues/23
+
+https://hub.docker.com/r/ryanfb/3d-photo-inpainting
+
+
+
+https://picturize.cc/
+
+https://github.com/vt-vl-lab/3d-photo-inpainting/issues/23#issuecomment-620776106
+
+--
+
+https://github.com/vt-vl-lab/3d-photo-inpainting/issues/16#issuecomment-628173900
+
+--
+
+https://github.com/vt-vl-lab/3d-photo-inpainting/issues/16
+
+
+--
+
+OSError invalid argument 
+main.py line 146
